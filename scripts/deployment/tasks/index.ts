@@ -1,0 +1,6 @@
+export * from './deployProtocolConfig'
+export * from './deployAutomatedLineOfCreditFactory'
+export * from './deployFixedInterestOnlyLoans'
+export * from './deployFlexiblePortfolioFactory'
+export * from './deployMultiInstrumentValuationStrategy'
+export * from './deployFIOLValuationStrategy'

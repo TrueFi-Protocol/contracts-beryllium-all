@@ -1,0 +1,134 @@
+{
+  "mainnet": {
+    "beryllium_protocolConfig": {
+      "txHash": "0x44e54d6671636b8798ce1a47fa85952022ac249eaff6d7eba3faf801d448f271",
+      "address": "0x5c67531524201D0a774405827BA4c2DE15781dD0",
+      "multisig": false
+    },
+    "beryllium_protocolConfig_proxy": {
+      "txHash": "0x081061607a546a1f13d219ae2d2f4116ff30dad47fa5c5940952b7a61b94e272",
+      "address": "0xe3A6f8AEdC857c810fF3bcC70AE37da670e282B4",
+      "multisig": false
+    },
+    "beryllium_depositController": {
+      "txHash": "0x6eec93ef15cb75dd922fdc044fb27b05c9dfd263caec1f85de571dc9ce320049",
+      "address": "0x9B64bFCB68B4EB76F22707B17DD91f62cDd8593A",
+      "multisig": false
+    },
+    "beryllium_blockedTransferController": {
+      "txHash": "0x46837d4475b3d8e2926ee589bb19d6714647b9548df3d9da2c10ce7d9fb82250",
+      "address": "0x9Aa7e69301E8a84bf487C6d1a2C261D16e66D252",
+      "multisig": false
+    },
+    "beryllium_openTransferController": {
+      "txHash": "0xb9efe023bdb1b0236611f360d8b44153f40c6e4bc3c10444061e896023e087d0",
+      "address": "0xCfdA78A7E2D5A8521Da993B007d4b210eAA5AC2D",
+      "multisig": false
+    },
+    "beryllium_multiFarmAllowedTransferController": {
+      "txHash": "0x837a184c139d46784cea3220f4ec835d96fc9b55349e92ebf1b368434d9d0823",
+      "address": "0x1E0AE950Bc20Cf2ACEc30BDbA1B8B79acF24aD95",
+      "multisig": false
+    },
+    "legacy_beryllium_withdrawController": {
+      "txHash": "0x674ce9088a378a81a20e2ca327098e0e081f36eeb11ebbe1f1ec9f46651433d2",
+      "address": "0xF24B7c9D74b9DEaeA000bFFd5E25B4c667E708E8",
+      "multisig": false
+    },
+    "beryllium_automatedLineOfCredit": {
+      "txHash": "0x69e774dac8fd77a74d3f72777291c1beff69ba3c67035c26dd7f7191a78692f9",
+      "address": "0x4677384e8F62c55e5B61f78686B7c328c35bA8a6",
+      "multisig": false
+    },
+    "beryllium_automatedLineOfCreditFactory": {
+      "txHash": "0xfa9c0faa390f57419fd18abce2dcffcad8155268f28387c06477b14a398cb0e3",
+      "address": "0x81f590a754a644274935F836AbCB92A4f443e8fd",
+      "multisig": false
+    },
+    "beryllium_automatedLineOfCreditFactory_proxy": {
+      "txHash": "0xafe2ec2c4c09bbbe39d8926e5db3d3ddc5f75a152b4b0fa744b41c4445d6a093",
+      "address": "0x1672f101be9FfE121AfF7514B373e956272fe249",
+      "multisig": false
+    },
+    "beryllium_fixedInterestOnlyLoans": {
+      "txHash": "0xd278caac2c499a3fa623e36638525c2c815b7cb9d5f6f95dc7302b5464ba387b",
+      "address": "0x8564b551e1eDa9bF76A3325bB00cD200519AE4e7",
+      "multisig": false
+    },
+    "beryllium_fixedInterestOnlyLoans_proxy": {
+      "txHash": "0x194b6434a2facb64f74a5c8ea3eeb39fd29d6bca508b269280a032db9020682f",
+      "address": "0xD1b4F0b9bc1998369702f6Ae86eae4488368EbD6",
+      "multisig": false
+    },
+    "beryllium_flexiblePortfolio": {
+      "txHash": "0xd9545f5bad78889092d478ac62a0e30d5eb40ff58dfa5e687199862e12b8b91b",
+      "address": "0x5c6b0d8070DDC0a6a85C460819C3A91c628070EC",
+      "multisig": false
+    },
+    "beryllium_flexiblePortfolioFactory": {
+      "txHash": "0xf520f2d29645672680f8e3648e8f8de25fc4abd9e868d8b5d1634dd63da3834d",
+      "address": "0x48baFc94c131Aa0B146AC92D956343f474cC438b",
+      "multisig": false
+    },
+    "beryllium_flexiblePortfolioFactory_proxy": {
+      "txHash": "0x251aa3fb5245dd353843d9f5aa0ac9412cf34bb48d8f75938ab337f154230ac1",
+      "address": "0x122d3Ba54975bDeb7579938Fb0fFc54F8bAeFD2A",
+      "multisig": false
+    },
+    "beryllium_multiInstrumentValuationStrategy": {
+      "txHash": "0x079c794a716b8d44afe1e3ce83747ef76dd1028d2091ba4b1420a16e8e90d194",
+      "address": "0xFfAaAf2F2CE353485b1a26ae2eED62EBe85B53c4",
+      "multisig": false
+    },
+    "beryllium_multiInstrumentValuationStrategy_proxy": {
+      "txHash": "0x68efa0eab79f0daaef6d3e17da890baa469a3f0f608d62404a4094bc9af6389b",
+      "address": "0xe0E2DEbCFCbc2342ABF2904EcED03714bc7f38BC",
+      "multisig": false
+    },
+    "beryllium_fixedInterestOnlyLoansValuationStrategy": {
+      "txHash": "0x6f788c4443824768b8e107e5d00c7b81471b5740c926f641b879eab40f892e92",
+      "address": "0x06b81d0419e4C6847711e8e0d4bE62F64428E5A3",
+      "multisig": false
+    },
+    "beryllium_fixedInterestOnlyLoansValuationStrategy_proxy": {
+      "txHash": "0xe5c39ece4e63d2a12f499e05723396d5aff8812e8908e74aa416948d34deab99",
+      "address": "0xd79388a9713e7ba26df629e705d138778611058c",
+      "multisig": false
+    },
+    "legacy_beryllium_whitelistDepositController": {
+      "txHash": "0x7a320119f5d1c7cbcb6aa36ee8356760036c20c39dc50121c7814eee58e09ead",
+      "address": "0x2F289f5395e6bbBf630810E8930252f555eb2483",
+      "multisig": false
+    },
+    "globalWhitelistLenderVerifier": {
+      "txHash": "0x84c4557823014746611fa48676ad9fba018267e4b5bea30ac06f1a44892780aa",
+      "address": "0xAe48bea8F3FC1696DC8ec75183705CeE1D071B05",
+      "source": "ragnarok"
+    },
+    "beryllium_withdrawController": {
+      "txHash": "0x5bbd07bc1078fe8eefa39895d2ca4785f5601b731b212b23c887fa6a515cb164",
+      "address": "0x4Df04c24e59d726dCAdD7845b8E8c16205930FEC",
+      "multisig": false
+    },
+    "beryllium_withdrawOncePortfolioIsClosedController": {
+      "txHash": "0x0acf620c49001258d23df85f2ce315f32c9e41b921f15f4792345f8134d31bfe",
+      "address": "0x1E137fC046A425092749E7b05248615b3924f4d3",
+      "multisig": false
+    },
+    "beryllium_allowAllLenderVerifier": {
+      "txHash": "0xc5379ff81f9a00b7eb8ed6ec97a7f7a664e3b27e5b7d5aa2ae3b305a8d2ff868",
+      "address": "0x847f5A9a1d5769f02E6AaA74EF22c6DBC31Cf8F3",
+      "multisig": false
+    },
+    "beryllium_globalWhitelistLenderVerifierWrapper": {
+      "txHash": "0xb9ada702e8d0b224c94cb557b3cd9d02f6f259c7039ad6fa33b20159d3b9203e",
+      "address": "0x0592A5aB52c9436D0fF41B8ABd78d802363614aB",
+      "multisig": false
+    },
+    "beryllium_feeStrategy": {
+      "txHash": "0x112bd09fea1515a5c435d27df6f95e4f18a38a10213417a8b1088d146666f2cc",
+      "address": "0x41aE58B5d41b6703294Daab3e7B8e7f29409B0bA",
+      "multisig": false
+    }
+  }
+}
