@@ -2,6 +2,7 @@
 pragma solidity ^0.8.10;
 
 import {IERC20Metadata} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import {IRateComputer} from "@adrastia-oracle/adrastia-periphery/contracts/rates/IRateComputer.sol";
 import {IAutomatedLineOfCredit} from "./interfaces/IAutomatedLineOfCredit.sol";
 import {PortfolioFactory} from "./PortfolioFactory.sol";
 import {ITransferController} from "./interfaces/ITransferController.sol";
@@ -26,6 +27,10 @@ contract AutomatedLineOfCreditFactory is PortfolioFactory {
         address transferControllerImplementation;
         /// @dev Encoded args with initialize method selector from transfer controller
         bytes transferControllerInitData;
+        /// @dev Implementation of the controller used when calling interest rate-related functions
+        address interestRateControllerImplementation;
+        /// @dev Encoded args with initialize method selector from interest rate controller
+        bytes interestRateControllerInitData;
     }
 
     function createPortfolio(
@@ -63,11 +68,15 @@ contract AutomatedLineOfCreditFactory is PortfolioFactory {
         address transferController = Clones.clone(controllersData.transferControllerImplementation);
         transferController.functionCall(controllersData.transferControllerInitData);
 
+        address interestRateController = Clones.clone(controllersData.interestRateControllerImplementation);
+        interestRateController.functionCall(controllersData.interestRateControllerInitData);
+
         return
             IAutomatedLineOfCredit.Controllers(
                 IDepositController(depositController),
                 IWithdrawController(withdrawController),
-                ITransferController(transferController)
+                ITransferController(transferController),
+                IRateComputer(interestRateController)
             );
     }
 }

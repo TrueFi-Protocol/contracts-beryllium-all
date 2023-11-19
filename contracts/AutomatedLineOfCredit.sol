@@ -13,6 +13,7 @@ import {IProtocolConfig} from "./interfaces/IProtocolConfig.sol";
 import {IDepositController} from "./interfaces/IDepositController.sol";
 import {IWithdrawController} from "./interfaces/IWithdrawController.sol";
 import {ITransferController} from "./interfaces/ITransferController.sol";
+import {IRateComputer} from "@adrastia-oracle/adrastia-periphery/contracts/rates/IRateComputer.sol";
 
 import {ERC20Upgradeable, IERC20MetadataUpgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
 
@@ -44,10 +45,12 @@ contract AutomatedLineOfCredit is IAutomatedLineOfCredit, ERC20Upgradeable, Upgr
     IDepositController public depositController;
     IWithdrawController public withdrawController;
     ITransferController public transferController;
+    IRateComputer public interestRateController;
 
     event DepositControllerChanged(IDepositController indexed newController);
     event WithdrawControllerChanged(IWithdrawController indexed newController);
     event TransferControllerChanged(ITransferController indexed newController);
+    event InterestRateControllerChanged(IRateComputer indexed newController);
 
     event MaxSizeChanged(uint256 newMaxSize);
     event Borrowed(uint256 amount);
@@ -86,6 +89,7 @@ contract AutomatedLineOfCredit is IAutomatedLineOfCredit, ERC20Upgradeable, Upgr
         _setDepositController(controllers.depositController);
         _setWithdrawController(controllers.withdrawController);
         _setTransferController(controllers.transferController);
+        _setInterestRateController(controllers.interestRateController);
     }
 
     // -- ERC20 metadata --
@@ -326,38 +330,7 @@ contract AutomatedLineOfCredit is IAutomatedLineOfCredit, ERC20Upgradeable, Upgr
     }
 
     function interestRate() public view returns (uint256) {
-        uint256 currentUtilization = utilization();
-        (
-            uint32 minInterestRate,
-            uint32 minInterestRateUtilizationThreshold,
-            uint32 optimumInterestRate,
-            uint32 optimumUtilization,
-            uint32 maxInterestRate,
-            uint32 maxInterestRateUtilizationThreshold
-        ) = getInterestRateParameters();
-        if (currentUtilization <= minInterestRateUtilizationThreshold) {
-            return minInterestRate;
-        } else if (currentUtilization <= optimumUtilization) {
-            return
-                solveLinear(
-                    currentUtilization,
-                    minInterestRateUtilizationThreshold,
-                    minInterestRate,
-                    optimumUtilization,
-                    optimumInterestRate
-                );
-        } else if (currentUtilization <= maxInterestRateUtilizationThreshold) {
-            return
-                solveLinear(
-                    currentUtilization,
-                    optimumUtilization,
-                    optimumInterestRate,
-                    maxInterestRateUtilizationThreshold,
-                    maxInterestRate
-                );
-        } else {
-            return maxInterestRate;
-        }
+        return interestRateController.computeRate(address(this));
     }
 
     function updateAndPayFee() external whenNotPaused {
@@ -413,16 +386,8 @@ contract AutomatedLineOfCredit is IAutomatedLineOfCredit, ERC20Upgradeable, Upgr
         return (_totalAssets, unpaidFee + accruedFee);
     }
 
-    function solveLinear(
-        uint256 x,
-        uint256 x1,
-        uint256 y1,
-        uint256 x2,
-        uint256 y2
-    ) internal pure returns (uint256) {
-        return (y1 * (x2 - x) + y2 * (x - x1)) / (x2 - x1);
-    }
-
+    /// @dev Only optimumUtilization is relevant. Discard the others values and consult the interestRateController
+    ///   for more information on the interest rate parameters.
     function getInterestRateParameters()
         public
         view
@@ -475,6 +440,16 @@ contract AutomatedLineOfCredit is IAutomatedLineOfCredit, ERC20Upgradeable, Upgr
     function _setTransferController(ITransferController _transferController) internal {
         transferController = _transferController;
         emit TransferControllerChanged(_transferController);
+    }
+
+    function setInterestRateController(IRateComputer _interestRateController) external onlyRole(CONTROLLER_ADMIN_ROLE) {
+        require(_interestRateController != interestRateController, "AutomatedLineOfCredit: New interest rate controller needs to be different");
+        _setInterestRateController(_interestRateController);
+    }
+
+    function _setInterestRateController(IRateComputer _interestRateController) internal {
+        interestRateController = _interestRateController;
+        emit InterestRateControllerChanged(_interestRateController);
     }
 
     function setMaxSize(uint256 _maxSize) external onlyRole(MANAGER_ROLE) {
