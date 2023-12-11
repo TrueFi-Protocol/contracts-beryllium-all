@@ -57,6 +57,7 @@
     "typescript": "4.9.4"
   },
   "dependencies": {
+    "@adrastia-oracle/adrastia-periphery": "^4.1.0",
     "@openzeppelin/contracts": "4.6.0",
     "@openzeppelin/contracts-upgradeable": "4.4.2",
     "merkletreejs": "^0.2.31"

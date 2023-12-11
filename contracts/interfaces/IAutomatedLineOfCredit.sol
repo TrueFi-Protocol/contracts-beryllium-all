@@ -2,6 +2,7 @@
 pragma solidity ^0.8.10;
 
 import {IERC20Metadata} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import {IRateComputer} from "@adrastia-oracle/adrastia-periphery/contracts/rates/IRateComputer.sol";
 import {IProtocolConfig} from "./IProtocolConfig.sol";
 import {IPortfolio} from "./IPortfolio.sol";
 import {IDepositController} from "./IDepositController.sol";
@@ -28,6 +29,7 @@ interface IAutomatedLineOfCredit is IPortfolio {
         IDepositController depositController;
         IWithdrawController withdrawController;
         ITransferController transferController;
+        IRateComputer interestRateController;
     }
 
     function initialize(
